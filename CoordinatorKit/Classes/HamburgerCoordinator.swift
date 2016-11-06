@@ -1,5 +1,4 @@
 import UIKit
-import CoordinatorKit
 
 class HamburgerCoordinator: Coordinator {
    

@@ -59,9 +59,9 @@ open class Coordinator {
         }
     }
     public func showDetailCoordinator(_ coordinator:Coordinator, sender: Any?) {
-        fatalError("not yet implemented")
+            fatalError("NYI")
         if let svc = splitViewCoordinator {
-            fatalError("not yet implemented")
+            print(svc)
         } else if let nc = navigationCoordinator {
             nc.pushCoordinator(coordinator, animated: true)
         } else {
