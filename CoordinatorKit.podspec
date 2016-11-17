@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
 
   s.homepage     = "https://github.com/nathanlanza/CoordinatorKit"
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
   s.source       = { :git => "https://github.com/nathanlanza/CoordinatorKit.git", :tag => "#{s.version}" }
 
   s.framework = "UIKit"

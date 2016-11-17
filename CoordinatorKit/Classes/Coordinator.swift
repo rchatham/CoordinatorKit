@@ -1,5 +1,11 @@
 import UIKit
 
+extension UIWindow {
+    public func setRootCoordinator(_ coordinator: Coordinator) {
+        rootViewController = coordinator.viewController
+    }
+}
+
 extension Coordinator: Equatable {
     public static func ==(lhs: Coordinator, rhs: Coordinator) -> Bool {
         return lhs === rhs
@@ -11,10 +17,12 @@ open class Coordinator {
     public var viewController: UIViewController! {
         set {
             vc = newValue
-            viewControllerDidLoad()
         }
         get {
-            if vc == nil { loadViewController() }
+            if vc == nil {
+                loadViewController()
+                viewControllerDidLoad()
+            }
             return vc
         }
     }
@@ -22,7 +30,6 @@ open class Coordinator {
     
     
     public init() {}
-    open func start() {}
     
     open func loadViewController() {
         viewController = UIViewController()
@@ -49,7 +56,11 @@ open class Coordinator {
     
     // Presenting Coordinators
     
-    var presentedCoordinator: Coordinator?
+    var presentedCoordinator: Coordinator? {
+        didSet {
+            print(presentedCoordinator)
+        }
+    }
     
     public func show(_ coordinator: Coordinator, sender: Any?) {
         if let nc = navigationCoordinator {

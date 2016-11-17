@@ -2,18 +2,20 @@ import UIKit
 
 open class TabBarCoordinator: Coordinator {
     
+    public weak var delegate: TabBarCoordinatorDelegate?
+    
     public var tabBarController: UITabBarController { return viewController as! UITabBarController }
     private var tabBarControllerDelegateProxy: TabBarControllerDelegateProxy!
     
-    public override init() {
-        super.init()
-        self.viewController = UITabBarController()
-    }
     open override func loadViewController() {
+        viewController = UITabBarController()
+    }
+    
+    open override func viewControllerDidLoad() {
+        super.viewControllerDidLoad()
+        
         tabBarControllerDelegateProxy = TabBarControllerDelegateProxy()
         tabBarControllerDelegateProxy.tabBarCoordinator = self
-        
-        viewController = UITabBarController()
         tabBarController.delegate = tabBarControllerDelegateProxy
     }
     
@@ -26,7 +28,6 @@ open class TabBarCoordinator: Coordinator {
     }
     public func setCoordinators(_ coordinators: [Coordinator]?, animated: Bool) {
         self.coordinators = coordinators
-        tabBarController.viewControllers = coordinators.map { unwrapped in unwrapped.map { coordinator in coordinator.viewController! } }
     }
     
     //Managing the Selected Tab
@@ -45,13 +46,28 @@ open class TabBarCoordinator: Coordinator {
     }
 }
 
+public protocol TabBarCoordinatorDelegate: class {
+    func tabBarCoordinator(_ tabBarCoordinator: TabBarCoordinator, didSelect coordinator: Coordinator)
+    func tabBarCoordinator(_ tabBarCoordinator: TabBarCoordinator, shouldSelect coordinator: Coordinator) -> Bool
+}
+public extension TabBarCoordinatorDelegate {
+    func tabBarCoordinator(_ tabBarCoordinator: TabBarCoordinator, didSelect coordinator: Coordinator) { }
+    func tabBarCoordinator(_ tabBarCoordinator: TabBarCoordinator, shouldSelect coordinator: Coordinator) -> Bool { return true }
+}
+
 
 class TabBarControllerDelegateProxy: NSObject, UITabBarControllerDelegate {
     weak var tabBarCoordinator: TabBarCoordinator!
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         tabBarCoordinator.selectedCoordinator?.willNavigateAwayFromViewController(false)
+        guard let index = tabBarController.viewControllers?.index(of: viewController) else { fatalError() }
+        guard let coordinator = tabBarCoordinator.coordinators?[index] else { fatalError() }
+        tabBarCoordinator.delegate?.tabBarCoordinator(tabBarCoordinator, didSelect: coordinator)
+        coordinator.willNavigateToViewController(false)
+    }
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let index = tabBarCoordinator.tabBarController.viewControllers?.index(of: viewController) else { fatalError() }
-        guard let new = tabBarCoordinator.coordinators?[index] else { fatalError() }
-        new.willNavigateToViewController(false)
+        guard let coordinator = tabBarCoordinator.coordinators?[index] else { fatalError() }
+        return tabBarCoordinator.delegate?.tabBarCoordinator(tabBarCoordinator, shouldSelect: coordinator) ?? true
     }
 }

@@ -19,7 +19,8 @@ The API is designed to feel very similar to `UIViewControllers`. You call `show`
 
 * Figure out how to implement `didNavigate{to,awayFrom}ViewController` for `TabBarCoordinator`.
 * Implement `SplitViewCoordinator`.
-* Figure out other things to implement.
+* `Coordinator` life cycle functions are mostly unimplemented.
+* HamburgerController/Coordinator might not stay around.
 
 ## Example
 

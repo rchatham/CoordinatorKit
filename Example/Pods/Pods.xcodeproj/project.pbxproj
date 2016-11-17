@@ -137,7 +137,6 @@
 		EF0FAAE7FA9F825F8D0C59872C31A12F /* NMBExceptionCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = D3109343F852605A7F27480B7E472450 /* NMBExceptionCapture.m */; };
 		F01A8DDF0F663E5B6D5F153080AD83ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C8CBBF32C39839511129EB1C04B4277 /* Foundation.framework */; };
 		F143479766663AC5F69BFA06621E0C4D /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AD55F3974939097556240403DEE2DFF /* Nimble.framework */; };
-		F3542AAF5BDA18EBB7682B7547912F65 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01B16B3F0B9F196D1A51736B652FF1A /* ReplaceMe.swift */; };
 		F5A65B5D06BE8C3CCBCD094DFAA43337 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB581661953B50A6C707A77A53A29B1F /* UIKit.framework */; };
 		F6869FD5F866F59F4FCED288DD50092C /* CoordinatorKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A02EF3443EE2FEA708C95684D88F9DC0 /* CoordinatorKit-dummy.m */; };
 		F705BEA6162DEF89020A508D9D55004C /* MatchError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A726EFCE2E054793738FE93A531FEE /* MatchError.swift */; };
@@ -266,7 +265,7 @@
 		5BA0AC495F0722C3E5F4127294B578E5 /* Pods-CoordinatorKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoordinatorKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		5C56350856D80E8F278221B0A5382FEF /* ExampleHooks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleHooks.swift; path = Sources/Quick/Hooks/ExampleHooks.swift; sourceTree = "<group>"; };
 		5D56B463E5214C8483397E82D68844BD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5EE765C3BE3694BDE6736B26E8EC8E63 /* CoordinatorKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CoordinatorKit.h; sourceTree = "<group>"; };
+		5EE765C3BE3694BDE6736B26E8EC8E63 /* CoordinatorKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CoordinatorKit.h; path = Classes/CoordinatorKit.h; sourceTree = "<group>"; };
 		5F8408B978A34DB8A23B6ABAFD131026 /* MatcherProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherProtocols.swift; path = Sources/Nimble/Matchers/MatcherProtocols.swift; sourceTree = "<group>"; };
 		602BABC9DDDD9E04A3149FB02F8987E1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		619AD31EF7A6FE29469C40C81E2B5B8C /* BeGreaterThanOrEqualTo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeGreaterThanOrEqualTo.swift; path = Sources/Nimble/Matchers/BeGreaterThanOrEqualTo.swift; sourceTree = "<group>"; };
@@ -329,7 +328,7 @@
 		B6D88C07118A66A51EC32424380408C7 /* MatcherFunc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MatcherFunc.swift; path = Sources/Nimble/Matchers/MatcherFunc.swift; sourceTree = "<group>"; };
 		B6E6830AA27655AA55B69AE4B44A2FCB /* World+DSL.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "World+DSL.h"; path = "Sources/QuickObjectiveC/DSL/World+DSL.h"; sourceTree = "<group>"; };
 		B81B719629BD832EC4C67EF8581CCE37 /* Pods-CoordinatorKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CoordinatorKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		B834382825076E7AA0519C531721E6B2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B834382825076E7AA0519C531721E6B2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = Classes/Info.plist; sourceTree = "<group>"; };
 		BB1E97D6DED818F8D3E4A65A8AFC9E01 /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
 		BC497308DAA996D8E3B24B14AB7D0A49 /* Expression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Expression.swift; path = Sources/Nimble/Expression.swift; sourceTree = "<group>"; };
 		BEB5784E1F123A269BD69AB3234D0497 /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
@@ -358,7 +357,6 @@
 		DC5422EF7E4DFFD6B00A4AF0415562F7 /* Match.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Match.swift; path = Sources/Nimble/Matchers/Match.swift; sourceTree = "<group>"; };
 		DDEF15285CEF640FDD57E837EB23D968 /* Pods-CoordinatorKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CoordinatorKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		DE6D9CF2EF4D98055355F44375F72D94 /* NSBundle+CurrentTestBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSBundle+CurrentTestBundle.swift"; path = "Sources/Quick/NSBundle+CurrentTestBundle.swift"; sourceTree = "<group>"; };
-		E01B16B3F0B9F196D1A51736B652FF1A /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
 		E2E08B6B37CD4BEBCBF6F0430E18CE2F /* Nimble-Snapshots.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Nimble-Snapshots.modulemap"; sourceTree = "<group>"; };
 		E43F66B4A1CA37AED3E40806B7CF8B56 /* NMBStringify.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NMBStringify.h; path = Sources/NimbleObjectiveC/NMBStringify.h; sourceTree = "<group>"; };
 		E52713AB725EFD258476D1E1481D4A73 /* BeginWith.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeginWith.swift; path = Sources/Nimble/Matchers/BeginWith.swift; sourceTree = "<group>"; };
@@ -792,13 +790,10 @@
 			isa = PBXGroup;
 			children = (
 				072DBD52F4E3A534F4BC3807372425E3 /* Coordinator.swift */,
-				5EE765C3BE3694BDE6736B26E8EC8E63 /* CoordinatorKit.h */,
 				238FDC5F1E65713EC680478D6F7393D2 /* HamburgerCoordinator.swift */,
-				B834382825076E7AA0519C531721E6B2 /* Info.plist */,
 				58256A5618C4E45952E4E503C84253C2 /* NavigationCoordinator.swift */,
-				E01B16B3F0B9F196D1A51736B652FF1A /* ReplaceMe.swift */,
-				FDDD3059215C3494EDB8258D99C91E0F /* SplitViewCoordinator.swift */,
 				45C735D0341685E4EACDBF603B39D4FC /* TabBarCoordinator.swift */,
+				FDDD3059215C3494EDB8258D99C91E0F /* SplitViewCoordinator.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -806,6 +801,8 @@
 		F006A5467D84F9835058EF0A38C71DA2 /* CoordinatorKit */ = {
 			isa = PBXGroup;
 			children = (
+				B834382825076E7AA0519C531721E6B2 /* Info.plist */,
+				5EE765C3BE3694BDE6736B26E8EC8E63 /* CoordinatorKit.h */,
 				D3CCBCB0D031C12758D0E27277DD9372 /* Classes */,
 			);
 			path = CoordinatorKit;
@@ -1171,7 +1168,6 @@
 				B74E9FDBC81EBF3BF37D54B4B7754420 /* HamburgerCoordinator.swift in Sources */,
 				72DE21CAAC52590D51FA2B2FCF974473 /* Info.plist in Sources */,
 				CE472F8F0EABCA1C2C081C0A47167441 /* NavigationCoordinator.swift in Sources */,
-				F3542AAF5BDA18EBB7682B7547912F65 /* ReplaceMe.swift in Sources */,
 				DFFE38264D5EA526D533064576B8855D /* SplitViewCoordinator.swift in Sources */,
 				13AF9C550B2BE0EBD9625EA10A4DC9AA /* TabBarCoordinator.swift in Sources */,
 			);
@@ -1284,7 +1280,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Nimble-Snapshots/Nimble-Snapshots-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Nimble-Snapshots/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Nimble-Snapshots/Nimble-Snapshots.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1349,7 +1345,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CoordinatorKit/CoordinatorKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CoordinatorKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/CoordinatorKit/CoordinatorKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1602,7 +1598,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Nimble-Snapshots/Nimble-Snapshots-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Nimble-Snapshots/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Nimble-Snapshots/Nimble-Snapshots.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -1803,7 +1799,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/CoordinatorKit/CoordinatorKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/CoordinatorKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/CoordinatorKit/CoordinatorKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;

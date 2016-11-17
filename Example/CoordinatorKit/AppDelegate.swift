@@ -1,23 +1,58 @@
-//
-//  AppDelegate.swift
-//  CoordinatorKit
-//
-//  Created by Nathan Lanza on 11/06/2016.
-//  Copyright (c) 2016 Nathan Lanza. All rights reserved.
-//
-
 import UIKit
+import CoordinatorKit
+
+class VC: UIViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(#function)
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(#function)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print(#function)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print(#function)
+    }
+}
+
+class Dummy: Coordinator {
+    
+    override func loadViewController() {
+        viewController = VC()
+    }
+    
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let hamburgerCoordinator = HamburgerCoordinator()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow()
+        let c1 = Dummy()
+        c1.viewController.view.backgroundColor = .purple
+        let c2 = Coordinator()
+        c2.viewController.view.backgroundColor = .yellow
+        
+        hamburgerCoordinator.hamburgerController.containerView.backgroundColor = .blue
+        hamburgerCoordinator.hamburgerController.tableView.backgroundColor = .red
+        window?.rootViewController = hamburgerCoordinator.viewController
+        
+        hamburgerCoordinator.setCoordinators([c1,c2], animated: false)
+        
+        window?.makeKeyAndVisible()
+        
         return true
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

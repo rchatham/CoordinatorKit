@@ -6,16 +6,17 @@ open class NavigationCoordinator: Coordinator {
     
     public override init() {
         super.init()
-        self.viewController = UINavigationController()
     }
     public init(rootCoordinator: Coordinator) {
         super.init()
-        self.viewController = UINavigationController()
         self.pushCoordinator(rootCoordinator, animated: false)
     }
     
-    open override func start() {
-        super.start()
+    open override func loadViewController() {
+        viewController = UINavigationController()
+    }
+    open override func viewControllerDidLoad() {
+        super.viewControllerDidLoad()
         interactivePopGestureRecognizer?.addTarget(self, action: #selector(NavigationCoordinator.popGestureRecognized(_:)))
     }
     
@@ -70,4 +71,21 @@ open class NavigationCoordinator: Coordinator {
         return gr
     }
     
+    
+    open override func willNavigateToViewController(_ animated: Bool) {
+        super.willNavigateToViewController(animated)
+        topCoordinator?.willNavigateToViewController(true)
+    }
+    open override func didNavigateToViewController(_ animated: Bool) {
+        super.didNavigateToViewController(animated)
+        topCoordinator?.didNavigateToViewController(animated)
+    }
+    open override func willNavigateAwayFromViewController(_ animated: Bool) {
+        super.willNavigateAwayFromViewController(animated)
+        topCoordinator?.willNavigateAwayFromViewController(animated)
+    }
+    open override func didNavigateAwayFromViewController(_ animated: Bool) {
+        super.didNavigateAwayFromViewController(animated)
+        topCoordinator?.didNavigateAwayFromViewController(animated)
+    }
 }
