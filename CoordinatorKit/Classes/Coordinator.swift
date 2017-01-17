@@ -1,8 +1,22 @@
 import UIKit
 
+
+
 extension UIWindow {
-    public func setRootCoordinator(_ coordinator: Coordinator) {
-        rootViewController = coordinator.viewController
+    
+    private struct AssociatedKeys {
+        static var rootCoordinator = "ck_rootCoordinator"
+    }
+    public var rootCoordinator: Coordinator? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.rootCoordinator) as? Coordinator
+        }
+        set {
+            if let coordinator = newValue {
+                objc_setAssociatedObject(self, &AssociatedKeys.rootCoordinator, coordinator, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+            rootViewController = newValue?.viewController
+        }
     }
 }
 
@@ -58,7 +72,6 @@ open class Coordinator {
     
     var presentedCoordinator: Coordinator? {
         didSet {
-            print(presentedCoordinator)
         }
     }
     
@@ -72,7 +85,7 @@ open class Coordinator {
     public func showDetailCoordinator(_ coordinator:Coordinator, sender: Any?) {
             fatalError("NYI")
         if let svc = splitViewCoordinator {
-            print(svc)
+            ///
         } else if let nc = navigationCoordinator {
             nc.pushCoordinator(coordinator, animated: true)
         } else {
