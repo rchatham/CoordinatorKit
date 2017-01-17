@@ -1,25 +1,5 @@
 import UIKit
 
-
-
-extension UIWindow {
-    
-    private struct AssociatedKeys {
-        static var rootCoordinator = "ck_rootCoordinator"
-    }
-    public var rootCoordinator: Coordinator? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.rootCoordinator) as? Coordinator
-        }
-        set {
-            if let coordinator = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.rootCoordinator, coordinator, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-            rootViewController = newValue?.viewController
-        }
-    }
-}
-
 extension Coordinator: Equatable {
     public static func ==(lhs: Coordinator, rhs: Coordinator) -> Bool {
         return lhs === rhs
@@ -30,7 +10,11 @@ open class Coordinator {
     
     public var viewController: UIViewController! {
         set {
+            if vc != nil {
+                fatalError("You can't change your viewController after it is initially set")
+            }
             vc = newValue
+            vc.coordinator = self
         }
         get {
             if vc == nil {
@@ -48,25 +32,18 @@ open class Coordinator {
     open func loadViewController() {
         viewController = UIViewController()
     }
-    open func viewControllerDidLoad() {
-        
-    }
-    open func willNavigateToViewController(_ animated: Bool) {
-        
-    }
-    open func didNavigateToViewController(_ animated: Bool) {
-        
-    }
-    open func willNavigateAwayFromViewController(_ animated: Bool) {
-        
-    }
-    open func didNavigateAwayFromViewController(_ animated: Bool) {
-        
-    }
+    open func viewControllerDidLoad() { }
+    
+    open func willNavigateToViewController(_ animated: Bool) { }
+    
+    open func didNavigateToViewController(_ animated: Bool) { }
+    
+    open func willNavigateAwayFromViewController(_ animated: Bool) { }
+    
+    open func didNavigateAwayFromViewController(_ animated: Bool) { }
     
     public var navigationItem: UINavigationItem { return viewController.navigationItem }
     public var tabBarItem: UITabBarItem { return viewController.tabBarItem }
-    
     
     // Presenting Coordinators
     
