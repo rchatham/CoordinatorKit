@@ -26,7 +26,6 @@ open class Coordinator {
     }
     private var vc: UIViewController!
     
-    
     public init() {}
     
     open func loadViewController() {
