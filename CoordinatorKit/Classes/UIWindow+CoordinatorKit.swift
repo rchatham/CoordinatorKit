@@ -2,16 +2,23 @@ import UIKit
 
 fileprivate let swizzling: (UIWindow.Type) -> () = { window in
     
-    //    let originalSelector = #selector(window.
-    //    let swizzledSelector = #selector(window.ck_setRootViewController(_:))
-    //
-    //    let originalMethod = class_getInstanceMethod(window, originalSelector)
-    //    let sizzledMethod = class_getInstanceMethod(window, swizzledSelector)
-    //
-    //    method_exchangeImplementations(originalMethod, swizzledMethod)
+        let originalSelector = #selector(window.makeKeyAndVisible)
+        let swizzledSelector = #selector(window.ck_makeKeyAndVisible)
+    
+        let originalMethod = class_getInstanceMethod(window, originalSelector)
+        let swizzledMethod = class_getInstanceMethod(window, swizzledSelector)
+    
+        method_exchangeImplementations(originalMethod, swizzledMethod)
 }
 
 extension UIWindow {
+    
+    func ck_makeKeyAndVisible() {
+        guard let rc = rootCoordinator else { fatalError("You must set a rootCoordinator before making the UIWindow key and visible") }
+        rc.willNavigateToViewController(false)
+        ck_makeKeyAndVisible()
+        rc.didNavigateToViewController(false)
+    }
    
     open override class func initialize() {
         guard self === UIWindow.self else { return }
