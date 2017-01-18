@@ -30,27 +30,24 @@ fileprivate let swizzling: (UIViewController.Type) -> () = { viewController in
 extension UIViewController {
     
     func ck_viewWillAppear(_ animated: Bool) {
-        print("Swizzled vwa")
         coordinator.willNavigateToViewController(animated)
         ck_viewWillAppear(animated)
     }
     func ck_viewDidAppear(_ animated: Bool) {
-        print("Swizzled vda")
         coordinator.didNavigateToViewController(animated)
         ck_viewDidAppear(animated)
     }
     func ck_viewWillDisappear(_ animated: Bool) {
-        print("Swizzled vwd")
         coordinator.willNavigateAwayFromViewController(animated)
         ck_viewWillDisappear(animated)
     }
     func ck_viewDidDisappear(_ animated: Bool) {
-        print("Swizzled vdd")
         coordinator.didNavigateAwayFromViewController(animated)
         ck_viewDidDisappear(animated)
     }
     
     open override class func initialize() {
+        guard self === UIViewController.self else { return }
         swizzling(self)
     }
 }
