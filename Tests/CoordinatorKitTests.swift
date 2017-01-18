@@ -1,11 +1,3 @@
-//
-//  CoordinatorKitTests.swift
-//  CoordinatorKitTests
-//
-//  Created by Nathan Lanza on January 18, 2017.
-//  Copyright © 2017 Nathan Lanza. All rights reserved.
-//
-
 import XCTest
 @testable import CoordinatorKit
 

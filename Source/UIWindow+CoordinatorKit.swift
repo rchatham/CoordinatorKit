@@ -14,7 +14,7 @@ fileprivate let swizzling: (UIWindow.Type) -> () = { window in
 extension UIWindow {
     
     func ck_makeKeyAndVisible() {
-        guard let rc = rootCoordinator else { fatalError("You must set a rootCoordinator before making the UIWindow key and visible") }
+        guard rootCoordinator != nil else { fatalError("You must set a rootCoordinator before making the UIWindow key and visible") }
         ck_makeKeyAndVisible()
     }
     

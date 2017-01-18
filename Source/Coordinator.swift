@@ -62,13 +62,13 @@ open class Coordinator {
     }
     public func showDetailCoordinator(_ coordinator:Coordinator, sender: Any?) {
         fatalError("NYI")
-        if let svc = splitViewCoordinator {
-            ///
-        } else if let nc = navigationCoordinator {
-            nc.pushCoordinator(coordinator, animated: true)
-        } else {
-            present(coordinator, animated: true)
-        }
+//        if splitViewCoordinator != nil {
+//            ///
+//        } else if let nc = navigationCoordinator {
+//            nc.pushCoordinator(coordinator, animated: true)
+//        } else {
+//            present(coordinator, animated: true)
+//        }
     }
     public func present(_ coordinatorToPresent: Coordinator, animated flag: Bool, completion: (() -> Void)? = nil) {
         presentedCoordinator = coordinatorToPresent
@@ -137,7 +137,7 @@ open class Coordinator {
                 if let parentNav = par as? NavigationCoordinator {
                     return parentNav
                 } else {
-                    parent = par.parent
+                    p = par.parent
                 }
             }
         }
@@ -152,7 +152,7 @@ open class Coordinator {
                 if let parentSVC = par as? SplitViewCoordinator {
                     return parentSVC
                 } else {
-                    parent = par.parent
+                    p = par.parent
                 }
             }
         }
