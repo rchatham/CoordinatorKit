@@ -20,6 +20,7 @@ The API is designed to feel very similar to `UIViewControllers`. You call `show`
 
 ## TODO: 
 
+* Fix Travis
 * Implement `SplitViewCoordinator`.
 * HamburgerController/Coordinator might not stay around.
 
