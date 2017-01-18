@@ -1,5 +1,10 @@
 import UIKit
 
+//delete this
+func thing() {
+   print("HI")
+}
+
 extension Coordinator: Equatable {
     public static func ==(lhs: Coordinator, rhs: Coordinator) -> Bool {
         return lhs === rhs
