@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.author           = { 'Nathan Lanza' => 'nathan@lanza.io' }
   s.social_media_url = 'https://twitter.com/nlanzaio'
 
-  s.source_files = 'CoordinatorKit/Classes/**/*'
+  s.source_files = 'CoordinatorKit/**/*'
   
 end
