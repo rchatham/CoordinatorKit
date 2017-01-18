@@ -31,10 +31,10 @@ open class NavigationCoordinator: Coordinator {
     public var coordinators = [Coordinator]()
     public func setCoordinators(_ coordinators: [Coordinator], animated: Bool) {
         for i in 1..<(coordinators.count) {
-            coordinators[i].parentCoordinator = coordinators[i-1]
+            coordinators[i].parent = coordinators[i-1]
         }
         if let first = coordinators.first {
-            first.parentCoordinator = self
+            first.parent = self
         }
         let vcs = coordinators.map { $0.viewController! }
         navigationController.setViewControllers(vcs, animated: animated)
@@ -43,9 +43,9 @@ open class NavigationCoordinator: Coordinator {
     // Pushing and Popping Stack Items
     public func pushCoordinator(_ coordinator: Coordinator, animated: Bool) {
         if let last = coordinators.last {
-            coordinator.parentCoordinator = last
+            coordinator.parent = last
         } else {
-            coordinator.parentCoordinator = self
+            coordinator.parent = self
         }
         coordinators.append(coordinator)
         navigationController.pushViewController(coordinator.viewController, animated: true)
@@ -69,23 +69,5 @@ open class NavigationCoordinator: Coordinator {
     public var interactivePopGestureRecognizer: UIGestureRecognizer? {
         let gr = navigationController.interactivePopGestureRecognizer
         return gr
-    }
-    
-    
-    open override func willNavigateToViewController(_ animated: Bool) {
-        super.willNavigateToViewController(animated)
-        topCoordinator?.willNavigateToViewController(true)
-    }
-    open override func didNavigateToViewController(_ animated: Bool) {
-        super.didNavigateToViewController(animated)
-        topCoordinator?.didNavigateToViewController(animated)
-    }
-    open override func willNavigateAwayFromViewController(_ animated: Bool) {
-        super.willNavigateAwayFromViewController(animated)
-        topCoordinator?.willNavigateAwayFromViewController(animated)
-    }
-    open override func didNavigateAwayFromViewController(_ animated: Bool) {
-        super.didNavigateAwayFromViewController(animated)
-        topCoordinator?.didNavigateAwayFromViewController(animated)
     }
 }

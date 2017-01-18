@@ -59,11 +59,9 @@ public extension TabBarCoordinatorDelegate {
 class TabBarControllerDelegateProxy: NSObject, UITabBarControllerDelegate {
     weak var tabBarCoordinator: TabBarCoordinator!
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        tabBarCoordinator.selectedCoordinator?.willNavigateAwayFromViewController(false)
         guard let index = tabBarController.viewControllers?.index(of: viewController) else { fatalError() }
         guard let coordinator = tabBarCoordinator.coordinators?[index] else { fatalError() }
         tabBarCoordinator.delegate?.tabBarCoordinator(tabBarCoordinator, didSelect: coordinator)
-        coordinator.willNavigateToViewController(false)
     }
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let index = tabBarCoordinator.tabBarController.viewControllers?.index(of: viewController) else { fatalError() }

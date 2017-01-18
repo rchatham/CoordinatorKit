@@ -71,20 +71,16 @@ open class Coordinator {
         }
     }
     public func present(_ coordinatorToPresent: Coordinator, animated flag: Bool, completion: (() -> Void)? = nil) {
-        coordinatorToPresent.willNavigateToViewController(flag)
         presentedCoordinator = coordinatorToPresent
         coordinatorToPresent.parent = self
         viewController.present(coordinatorToPresent.viewController, animated: flag, completion: completion)
-        coordinatorToPresent.didNavigateToViewController(flag)
     }
     
     public func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
         guard let pc = presentedCoordinator else { fatalError() }
-        pc.willNavigateAwayFromViewController(flag)
         pc.parent = nil
         presentedCoordinator = nil
         viewController.dismiss(animated: flag, completion: completion)
-        pc.didNavigateAwayFromViewController(flag)
     }
     public var definesPresentationContext: Bool {
         get { return viewController.definesPresentationContext }
