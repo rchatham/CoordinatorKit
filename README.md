@@ -1,21 +1,3 @@
-# WARNING
-
-Thank you for using CoordinatorKit. Before you release your awesome project to the world, complete the following steps.
-
-THIS LIST IS EASY, CHECK IT OFF ONE-BY-ONE BABY!
-
- - [ ] Open the project in Xcode and add features to CoordinatorKit
- - [ ] Make sure you are using Swift 3 ("Convert to latest Swift syntax")
- - [ ] Fix all build errors and warnings, add tests (yes really)
- - [ ] Add a screenshot or AT LEAST some picture, and fill in this readme
- - [ ] Add all details to your [Podspec](CoordinatorKit.podspec)
- - [ ] Delete all this crap up here
- - [ ] Make one release (full steps are in [CONTRIBUTING.md] in case you forget)
-
-THEN YOU'RE DONE, GO STAR [swift3-module-template](https://github.com/fulldecent/swift3-module-template) FOR UPDATES.
-
-----
-
 # CoordinatorKit
 
 [![CI Status](http://img.shields.io/travis/nathanlanza/CoordinatorKit.svg?style=flat)](https://travis-ci.org/nathanlanza/CoordinatorKit)
@@ -26,6 +8,20 @@ THEN YOU'RE DONE, GO STAR [swift3-module-template](https://github.com/fulldecent
 
 <a href="https://placehold.it/400?text=Screen+shot"><img width=200 height=200 src="https://placehold.it/400?text=Screen+shot" alt="Screenshot" /></a>
 
+## About
+
+CoordinatorKit is a simple framework that provides base classes for the coordinator pattern. The design of this framework was chosen to mirror the implementation of `UIKIt`'s `UIViewController`. There is a base `Coordinator` analagous to a `UIViewController` and, similarly, `TabBarCoordinator` and `NavigationCoordinator`.
+
+You use these classes by overriding `loadViewController` and initializing the property `viewController.` You can also create a custom property such as
+
+var myViewController: MyViewController { return viewController as! MyViewController }.
+
+The API is designed to feel very similar to `UIViewControllers`. You call `show`, `present`, `dismiss`, and various other methods on the coordinators in order to provide navigation. If I develop this far enough, I'll create documentation, but for now just see the base classes.
+
+## TODO: 
+
+* Implement `SplitViewCoordinator`.
+* HamburgerController/Coordinator might not stay around.
 
 ## Example
 
@@ -82,7 +78,7 @@ Run `carthage update` to build the framework and drag the built `CoordinatorKit`
 
 ## Author
 
-Nathan Lanza
+Nathan Lanza -> nathan@lanza.io
 
 
 ## License
