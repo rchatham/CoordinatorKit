@@ -5,7 +5,7 @@ open class TabBarCoordinator: Coordinator {
     public weak var delegate: TabBarCoordinatorDelegate?
     
     public var tabBarController: UITabBarController { return viewController as! UITabBarController }
-    private var tabBarControllerDelegateProxy: TabBarControllerDelegateProxy!
+    private let tabBarControllerDelegateProxy = TabBarControllerDelegateProxy()
     
     open override func loadViewController() {
         viewController = UITabBarController()
@@ -14,7 +14,6 @@ open class TabBarCoordinator: Coordinator {
     open override func viewControllerDidLoad() {
         super.viewControllerDidLoad()
         
-        tabBarControllerDelegateProxy = TabBarControllerDelegateProxy()
         tabBarControllerDelegateProxy.tabBarCoordinator = self
         tabBarController.delegate = tabBarControllerDelegateProxy
     }
@@ -44,7 +43,28 @@ open class TabBarCoordinator: Coordinator {
         get { return tabBarController.selectedIndex }
         set { tabBarController.selectedIndex = newValue }
     }
+    
+    
+    public func addButton(for coordinator: Coordinator, at index: Int) {
+        dummyIndices.append(index)
+        
+        let dc = Coordinator()
+        dc.tabBarItem.image = coordinator.tabBarItem.image
+        dc.tabBarItem.title = coordinator.tabBarItem.title
+        dummyCoordinators.append(dc)
+        
+        buttonCoordinators.append(coordinator)
+        
+        guard coordinators!.count > 0 else { fatalError("Set the coordinators property prior to adding a button") }
+        coordinators?.insert(dc, at: index)
+    }
+    var dummyIndices: [Int] = []
+    var dummyCoordinators: [Coordinator] = []
+    var buttonCoordinators: [Coordinator] = []
 }
+
+
+
 
 public protocol TabBarCoordinatorDelegate: class {
     func tabBarCoordinator(_ tabBarCoordinator: TabBarCoordinator, didSelect coordinator: Coordinator)
@@ -66,6 +86,12 @@ class TabBarControllerDelegateProxy: NSObject, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let index = tabBarCoordinator.tabBarController.viewControllers?.index(of: viewController) else { fatalError() }
         guard let coordinator = tabBarCoordinator.coordinators?[index] else { fatalError() }
+        //MARK: - Handling dummy buttons
+        if let dummyIndex = tabBarCoordinator.dummyCoordinators.index(of: coordinator) {
+            tabBarCoordinator.present(tabBarCoordinator.buttonCoordinators[dummyIndex], animated: true)
+            return false
+        }
+        //MARK: - END Handling dummy buttons
         return tabBarCoordinator.delegate?.tabBarCoordinator(tabBarCoordinator, shouldSelect: coordinator) ?? true
     }
 }
