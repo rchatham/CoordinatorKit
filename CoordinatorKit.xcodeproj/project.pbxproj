@@ -17,7 +17,6 @@
 		D9899DD41DF4A092008766B5 /* CoordinatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9899DCA1DF4A092008766B5 /* CoordinatorKit.framework */; };
 		D9899DD91DF4A093008766B5 /* CoordinatorKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9899DD81DF4A093008766B5 /* CoordinatorKitTests.swift */; };
 		D9899DDB1DF4A093008766B5 /* CoordinatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D9899DCD1DF4A092008766B5 /* CoordinatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D9899DE81DF4A3F2008766B5 /* wk.png in Resources */ = {isa = PBXBuildFile; fileRef = D9899DE71DF4A3F2008766B5 /* wk.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,7 +213,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9899DE81DF4A3F2008766B5 /* wk.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
