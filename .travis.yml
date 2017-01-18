@@ -9,7 +9,7 @@ env:
   - IOS_SDK=iphonesimulator10.2
   - EXAMPLE_SCHEME="iOS Example"
   matrix:
-     - DESTINATION="platform=iOS Simulator,OS=10.2,name=iPhone 7 Plus"     SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     POD_LINT="NO"
+     - DESTINATION="platform=iOS Simulator,OS=10.2,id=E40727B3-41FB-4D6E-B4CB-BFA87109EB12"     SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     POD_LINT="NO"
 script:
   - set -o pipefail
   - xcodebuild -version
