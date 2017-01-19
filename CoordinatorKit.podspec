@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CoordinatorKit'
-  s.version          = '0.0.5'
+  s.version          = '0.0.6'
   s.summary          = "A framework that implements the coordinator pattern in a fashion similar to how UIViewControllers work."
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
