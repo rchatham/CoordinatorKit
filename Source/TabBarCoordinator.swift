@@ -61,6 +61,17 @@ open class TabBarCoordinator: Coordinator {
     var dummyIndices: [Int] = []
     var dummyCoordinators: [Coordinator] = []
     var buttonCoordinators: [Coordinator] = []
+    
+    public func colorButtons(colorsAndIndices: [(color: UIColor,index: CGFloat)] ) {
+        let tb = tabBarController.tabBar
+        let itemWidth = tb.frame.width / CGFloat(tb.items!.count)
+        for pair in colorsAndIndices {
+            let backgroundView = UIView(frame: CGRect(x: itemWidth * pair.index, y: 0, width: itemWidth, height: tb.frame.height))
+            backgroundView.backgroundColor = pair.color
+            tb.insertSubview(backgroundView, at: 0)
+        }
+    }
+    var hasSetUpColors = false
 }
 
 
