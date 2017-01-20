@@ -45,7 +45,7 @@ open class TabBarCoordinator: Coordinator {
     }
     
     
-    public func addButton(for coordinator: Coordinator, at index: Int) {
+    public func addButton<T: Coordinator>(for coordinator: T, at index: Int) {
         dummyIndices.append(index)
         
         let dc = Coordinator()
@@ -74,8 +74,9 @@ open class TabBarCoordinator: Coordinator {
     var hasSetUpColors = false
 }
 
-
-
+public protocol TabBarButtonCoordinator: class {
+    func prepareForReuse()
+}
 
 public protocol TabBarCoordinatorDelegate: class {
     func tabBarCoordinator(_ tabBarCoordinator: TabBarCoordinator, didSelect coordinator: Coordinator)
@@ -99,7 +100,10 @@ class TabBarControllerDelegateProxy: NSObject, UITabBarControllerDelegate {
         guard let coordinator = tabBarCoordinator.coordinators?[index] else { fatalError() }
         //MARK: - Handling dummy buttons
         if let dummyIndex = tabBarCoordinator.dummyCoordinators.index(of: coordinator) {
-            tabBarCoordinator.present(tabBarCoordinator.buttonCoordinators[dummyIndex], animated: true)
+            let c = tabBarCoordinator.buttonCoordinators[dummyIndex]
+            (c as! TabBarButtonCoordinator).prepareForReuse()
+            let cNav = NavigationCoordinator(rootCoordinator: c)
+            tabBarCoordinator.present(cNav, animated: true)
             return false
         }
         //MARK: - END Handling dummy buttons

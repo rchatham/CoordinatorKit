@@ -4,7 +4,7 @@ open class NavigationCoordinator: Coordinator {
     
     public var navigationController: UINavigationController! { return viewController as! UINavigationController }
     
-    public override init() {
+    public required override init() {
         super.init()
     }
     public init(rootCoordinator: Coordinator) {
