@@ -1,14 +1,15 @@
 import UIKit
 
-//delete this
-func thing() {
-   print("HI")
-}
-
 extension Coordinator: Equatable {
     public static func ==(lhs: Coordinator, rhs: Coordinator) -> Bool {
         return lhs === rhs
     }
+}
+
+public protocol CoordinatorType {
+    var viewController: UIViewController! { get set }
+    
+        
 }
 
 open class Coordinator {
@@ -69,7 +70,7 @@ open class Coordinator {
         fatalError("NYI")
 //        if splitViewCoordinator != nil {
 //            ///
-//        } else if let nc = navigationCoordinator {
+//        } else if let nc = navigationCoordin  ator {
 //            nc.pushCoordinator(coordinator, animated: true)
 //        } else {
 //            present(coordinator, animated: true)
